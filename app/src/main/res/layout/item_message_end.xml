@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="message"
+            type="com.rubykamboj.rapid.data.models.Message" />
+
+        <variable
+            name="onClick"
+            type="com.rubykamboj.rapid.adapters.MessageAdapter.OnClickMessage" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:onClick="@{() -> onClick.onClick(message)}"
+        app:cardBackgroundColor="@color/background"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp">
+
+            <LinearLayout
+                android:id="@+id/linear_body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_message_end"
+                    android:padding="8dp"
+                    android:text="@{message.body}"
+                    android:textColor="@android:color/white"
+                    tools:text="@string/message" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_message_changed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/you_changed_message"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/linear_body"
+                app:layout_constraintTop_toBottomOf="@id/linear_body"
+                app:visible="@{message.changed}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@{message.seen ? @string/seen : @string/delivered}"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/text_created_at"
+                app:layout_constraintEnd_toStartOf="@id/text_created_at"
+                tools:text="@string/delivered" />
+
+            <TextView
+                android:id="@+id/text_created_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="12sp"
+                app:createdAt="@{message.createdAt}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/text_message_changed"
+                app:layout_constraintTop_toBottomOf="@id/text_message_changed"
+                tools:text="@string/created_at" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

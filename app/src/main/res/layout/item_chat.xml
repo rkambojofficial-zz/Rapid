@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="chat"
+            type="com.rubykamboj.rapid.data.models.Chat" />
+
+        <variable
+            name="onClick"
+            type="com.rubykamboj.rapid.adapters.ChatAdapter.OnClickChat" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> onClick.onClick(chat)}"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_avatar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:avatarURL="@{chat.userAvatarURL}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_avatar" />
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:singleLine="true"
+                android:text="@{chat.userName}"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@id/text_created_at"
+                app:layout_constraintStart_toEndOf="@id/image_avatar"
+                app:layout_constraintTop_toTopOf="@id/image_avatar"
+                tools:text="@string/name" />
+
+            <TextView
+                android:id="@+id/text_created_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                app:createdAt="@{chat.updatedAt}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/text_name"
+                app:visible="@{!chat.lastMessageBody.empty}"
+                tools:text="@string/created_at" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:singleLine="true"
+                android:text="@{chat.lastMessageBody}"
+                app:layout_constraintBottom_toBottomOf="@id/image_avatar"
+                app:layout_constraintEnd_toStartOf="@id/text_count"
+                app:layout_constraintStart_toStartOf="@id/text_name"
+                tools:text="@string/message" />
+
+            <TextView
+                android:id="@+id/text_count"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/bg_circle"
+                android:gravity="center"
+                android:text="@{String.valueOf(chat.unseenMessagesCount)}"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView"
+                app:layout_constraintEnd_toEndOf="@+id/text_created_at"
+                app:visible="@{chat.unseenMessagesCount > 0}"
+                tools:text="2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

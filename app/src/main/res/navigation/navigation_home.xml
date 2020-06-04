@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/fragment_chats">
+
+    <fragment
+        android:id="@+id/fragment_chats"
+        android:name="com.rubykamboj.rapid.fragments.ChatsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_chats">
+
+        <action
+            android:id="@+id/action_fragment_chats_to_fragment_messages"
+            app:destination="@id/fragment_messages" />
+
+        <action
+            android:id="@+id/action_fragment_chats_to_fragment_users"
+            app:destination="@id/fragment_users" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_messages"
+        android:name="com.rubykamboj.rapid.fragments.MessagesFragment"
+        android:label="{userName}"
+        tools:layout="@layout/fragment_messages">
+
+        <argument
+            android:name="userName"
+            app:argType="string" />
+
+        <argument
+            android:name="chat"
+            app:argType="com.rubykamboj.rapid.data.models.Chat" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_users"
+        android:name="com.rubykamboj.rapid.fragments.UsersFragment"
+        android:label="@string/users"
+        tools:layout="@layout/fragment_users">
+
+        <action
+            android:id="@+id/action_fragment_users_to_fragment_messages"
+            app:destination="@id/fragment_messages"
+            app:popUpTo="@id/fragment_chats" />
+    </fragment>
+</navigation>

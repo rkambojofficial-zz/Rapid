@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rapid</string>
+    <string name="app_icon">Rapid icon</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="reset_password">Reset password</string>
+    <string name="name_is_required">Name is required</string>
+    <string name="email_is_required">Email is required</string>
+    <string name="email_is_invalid">Email is invalid</string>
+    <string name="password_is_required">Password is required</string>
+    <string name="password_is_short">Password should be at least 6 characters</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="signed_in_successfully">Signed in successfully</string>
+    <string name="signed_up_successfully">Signed up successfully</string>
+    <string name="email_sent_successfully">Password reset email sent successfully</string>
+    <string name="sign_out">Sign out</string>
+    <string name="sign_out_warning">This will delete all your chats and messages</string>
+    <string name="signed_out_successfully">Signed out successfully</string>
+    <string name="search">Search</string>
+    <string name="message">Message</string>
+    <string name="seen">Seen</string>
+    <string name="delivered">Delivered</string>
+    <string name="created_at">Created at</string>
+    <string name="users">Users</string>
+    <string name="type_a_message">Type a message</string>
+    <string name="message_was_changed">This message was changed</string>
+    <string name="you_changed_message">You changed this message</string>
+    <string name="change_message">Change message</string>
+    <string name="changed_once">You can only change a message once</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_message">Delete message</string>
+    <string name="delete_for_me">Delete for me</string>
+    <string name="delete_for_everyone">Delete for everyone</string>
+    <string name="clear_chat">Clear chat</string>
+    <string name="notification_channel_id" translatable="false">rapid_notifications</string>
+    <string name="notification_channel_name" translatable="true">Rapid notifications</string>
+    <string name="start_chat">Start chat</string>
+    <string name="no_chats">You haven\'t started any chats yet</string>
+</resources>
